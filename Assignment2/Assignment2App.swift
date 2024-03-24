@@ -11,7 +11,18 @@ import SwiftUI
 struct Assignment2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            Converter()
+            NavigationView {
+                List {
+                    NavigationLink(destination: Converter()) {
+                        Text("World Currency Exchange")
+                    }
+                    NavigationLink(destination: CryptoConverter()) {
+                        Text("Crypto Exchange")
+                    }
+                }
+                .navigationBarTitle("Conversion App")
+            }
         }
     }
 }

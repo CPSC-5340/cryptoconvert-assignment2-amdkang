@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct CryptoCurrencyItem: View {
+    var crypto : CryptoConvertModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        CryptoItem(crypto: crypto.cryptoContent)
     }
 }
 
-#Preview {
-    CryptoCurrencyItem()
+struct CryptoCurrencyItem_Previews: PreviewProvider {
+    static var previews: some View {
+        CryptoCurrencyItem(crypto: CryptoConvertModel(cryptoContent: CryptoItemModel(cryptoName: "", multiplier: 1, cryptoAmt: 1)))
+    }
+}
+
+struct CryptoItem: View {
+    var crypto: CryptoItemModel
+    var body: some View {
+        HStack {
+            Text(crypto.cryptoName)
+            Spacer()
+            Text(String(crypto.cryptoAmt))
+        }
+    }
 }

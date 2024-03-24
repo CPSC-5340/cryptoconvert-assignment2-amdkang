@@ -8,19 +8,32 @@
 import SwiftUI
 
 struct Converter: View {
+    
+    @ObservedObject var viewModel = CurrencyConverterViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))]) {
+                ForEach(viewModel.listOfCards) { card in
+                    CurrencyItem(card: card)
+                        .onTapGesture {
+                            viewModel.flip(card: card)
+                        }
+                }
+            }
         }
-        .padding()
+        .onAppear {
+            viewModel.fetchCards()
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Converter()
-    }
+#Preview {
+    Converter()
 }
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Converter()
+//    }
+//}

@@ -11,7 +11,6 @@ import SwiftUI
 struct Assignment2App: App {
     var body: some Scene {
         WindowGroup {
-//            Converter()
             NavigationView {
                 List {
                     NavigationLink(destination: Converter()) {

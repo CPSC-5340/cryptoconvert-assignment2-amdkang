@@ -31,9 +31,3 @@ struct Converter: View {
 #Preview {
     Converter()
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Converter()
-//    }
-//}
